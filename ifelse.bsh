@@ -1,14 +1,28 @@
 #!/bin/bash
+####
+###
+#
 
-day=`date | cut -c1-3`
 
-if [ $day = "Mon" ]
-then
-	echo 'Start Monday Build'
-elif [ $day = "Tue" ]
-then
-	echo 'Start Regression TestSuite'
-elif [ $day = 'Sat' ]
-then
-	echo 'Start Release'
-fi
+ls
+pwd
+git branch
+BRANCH=develop1
+git checkout -f $BRANCH 
+git log
+git branch
+touch settings.xml
+echo "hello world" > settings.xml
+echo $BUILD_NUMBER > settings.xml
+git status
+echo $Token
+git add *
+git commit -m "Config changes related to scripts"
+git remote rm origin
+git remote add origin https://${Token}@github.com/hotkey123/maven1.git
+git push -f origin $BRANCH
+git status
+
+###
+
+#
